@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="StyleSheet" href="css/reset.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="StyleSheet" href="css/style.css">
+    <title>Fintech Paçoca</title>
+</head>
+<body>
+    <div id="menu">
+        <div>Fintech Paçoca</div>
+        <div><img></div>
+    </div>
+    <div id="result">
+        <div class="title">Resultado</div>
+        <div id="resultDiv">
+            <div class="resultado">
+                <div id="nameDiv"></div>
+                <div id="textoDiv">
+
+                </div>
+            </div>
+            <div>
+                <a class="button" href="index.html" onclick="clean()">Simular Novamente</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function get () {
+          // (A) GET FROM SESSION
+          let nome = sessionStorage.getItem("nome");
+              // JSON parse to turn stored sting back into array
+          let sal = sessionStorage.getItem("sal");
+          let anos = sessionStorage.getItem("anos");
+          
+          let juros = (Number(sal)*12*Number(anos))/100*6.18;
+        
+          document.getElementById("nameDiv").innerHTML = "Olá, "+nome;
+          document.getElementById("textoDiv").innerHTML = "Juntando R$"+sal+" todo mês, você terá R$"+(Number(sal)*12*Number(anos)+juros).toFixed(2)+" em "+anos+" anos";
+        }
+
+        get();
+
+        function clean(){
+            sessionStorage.removeItem("nome");
+            sessionStorage.removeItem("sal");
+            sessionStorage.removeItem("anos");
+            sessionStorage.clear();
+        }
+        </script>
+</body>
+</html>

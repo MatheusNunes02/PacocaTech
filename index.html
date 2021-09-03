@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="StyleSheet" href="css/reset.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="StyleSheet" href="css/style.css">
+    <title>Fintech Paçoca</title>
+</head>
+<body>
+    <div id="menu">
+        <div>Fintech Paçoca</div>
+        <div><img></div>
+    </div>
+    <div id="content">
+        <div class="title">Simulador</div>
+        <form action="resultado.html" id="simuladorForm">
+            <div class="formLine">
+                <label>Nome:</label>
+                <input class="input" type="text" id="txtNome" placeholder="EX: Matheus Nunes..." maxlength="50" required> 
+            </div>
+            <div class="formLine">
+                <label>Salário mensal:</label>
+                <input class="input" type="number" id="numSal" placeholder="EX: 1000.00" maxlength="20" required> 
+            </div>
+            <div class="formLine">
+                <label>Tempo:</label>
+                <select class="input" id="selectAnos">
+                    <option value="1">1 ano</option>
+                    <option value="2">2 anos</option>
+                    <option value="3">3 anos</option>
+                    <option value="4">4 anos</option>
+                    <option value="5">5 anos</option>
+                    <option value="6">6 anos</option>
+                    <option value="7">7 anos</option>
+                    <option value="8">8 anos</option>
+                    <option value="9">9 anos</option>
+                    <option value="10">10 anos</option>
+                </select>
+            </div>
+            <input type="submit" value="Simular" class="submitButton" href="resultado.html" onclick="store()">
+        </form> 
+    </div>
+    <script>
+        function store () {
+            // (A) VARIABLES TO PASS
+            let nome = document.getElementById("txtNome").value;
+            let sal = document.getElementById("numSal").value;
+            let anos = document.getElementById("selectAnos").value;
+
+            console.log(nome,sal,anos)
+            // (B) SAVE TO SESSION STORAGE
+            // sessionStorage.setItem("KEY", "VALUE");
+            sessionStorage.setItem("nome", nome);
+            sessionStorage.setItem("sal", sal);
+            sessionStorage.setItem("anos", anos);
+            // session storage cannot store array and objects
+            // JSON encode before storing, convert to string
+
+            // (C) REDIRECT
+            // Opening new window works too
+            // window.open("1b-session.html");
+            }
+    </script>
+</body>
+</html>
